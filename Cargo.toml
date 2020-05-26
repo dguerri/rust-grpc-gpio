@@ -1,0 +1,20 @@
+[package]
+name = "rust-grpc-gpio"
+version = "0.1.0"
+authors = ["Davide Guerri <davide.guerri@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+async-stream = "0.2"
+futures = { version = "0.3", default-features = false, features = ["alloc"] }
+futures-core = "0.3"
+futures-util = "0.3"
+gpio-cdev = "0.2"
+prost = "0.6"
+tokio = { version = "0.2", features = ["macros", "sync", "stream", "time"] }
+tonic = { version = "0.2", features = ["tls"] }
+env_logger = "0.7"
+log = "0.4"
+
+[build-dependencies]
+tonic-build = { version = "0.2", features = ["prost"] }

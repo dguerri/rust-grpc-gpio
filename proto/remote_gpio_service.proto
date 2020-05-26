@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package remote_gpio_service;
+
+message GpioReadRequest {
+    uint32 pin = 1;
+    uint64 interval_ms = 2;
+}
+
+message GpioReadResponse {
+    bool value = 1;
+}
+
+message GpioWriteRequest {
+    oneof RequestType{
+        uint32 pin = 1;
+        bool value = 2;
+    }
+}
+
+message GpioWriteResponse {
+}
+
+service RemoteGpioService {
+
+    rpc ReadGpio(GpioReadRequest) returns (stream GpioReadResponse) {}
+
+    rpc WriteGpio(stream GpioWriteRequest) returns (GpioWriteResponse) {}
+
+}   
